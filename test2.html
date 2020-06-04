@@ -1,0 +1,1777 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script src="C:\two\Node-Scrapping.v2\node-scraping\public\indexvue.js"></script>
+    
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="C:\two\Node-Scrapping.v2\node-scraping\public\stylesheets\style.css">
+    
+    <title>Quotation Checker</title>
+  </head>
+  <body>
+      <div v-cloak id="container" class="container" >
+          <div class="offset-3" id="total">
+          <div class="row">
+              <div class="col-md-12">
+                 <p>PRICE for ALL: <span v-html="Totalprice"></span> Naira</p>
+          </div>
+          
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p>  Delivery fee(in china):<span v-html="delivery"></span> Naira</p>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+            <p>Agent's Commision(5%):<span v-html="Commision"></span> Naira</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <strong>  <p>TOTAL: <span v-html="Total"></span> Naira</p></strong>
+</div>
+</div>
+</div>
+ 
+<div :id="link1">
+
+<div class="form-group">
+    <div class="form-row">
+            <div class="col-10 offset-1">
+        <input type=text  class="form-control" placeholder="Enter 1688 link" id="search">
+    </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 offset-2">
+        <p><span v-html="NameofItem"></span></p>
+</div>
+
+</div>
+<div class="row">
+    <div class="col-md-12 offset-2">
+        <p>price:{{tags}}<span class="offset-4">Quantity</span></p>
+        <input id="" ref="transPrice" value="{{tags}}">
+</div>      
+
+</div>
+
+<div class="offset-1">
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-row">
+            <div class="col-4">
+              <input type="text" class="form-control" v-model="color1" placeholder="Color">
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" v-model="size1" placeholder="Size">
+            </div>
+            <div class="col">
+
+          
+                <button id="button" v-on:click="minus(),QuotationCreation(),sumTotal()">-</button>
+        <span v-html="Quantity"></span>
+        <button v-on:click="add(),QuotationCreation(),sumTotal()">+</button>
+              </div>
+           
+          </div>
+       <br> 
+        
+</div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-row">
+            <div class="col-4">
+              <input type="text"  v-model="color2" class="form-control" placeholder="Color">
+            </div>
+            <div class="col">
+              <input type="text"  v-model="size2" class="form-control" placeholder="Size">
+            </div>
+            <div class="col">
+                <button  v-on:click="minus2(),QuotationCreation(),sumTotal()">-</button>
+       <span v-html="Quantity2"></span> 
+        <button v-on:click="add2(),QuotationCreation(),sumTotal()">+</button>
+              </div>
+           
+          </div>
+        
+        <br>
+</div>
+
+</div>
+
+<div :id="thirdOption" class="row">
+    <div class="col-md-12">
+        <div class="form-row">
+            <div class="col-4">
+              <input type="text"  v-model="color3" class="form-control" placeholder="Color">
+            </div>
+            <div class="col">
+              <input type="text"  v-model="size3" class="form-control" placeholder="Size">
+            </div>
+            <div class="col">
+                <button  v-on:click="minus3(),QuotationCreation(),sumTotal()">-</button>
+        <span v-html="Quantity3"></span>
+        <button v-on:click="add3(),QuotationCreation(),sumTotal()">+</button>
+              </div>
+           
+          </div>
+        
+       <br> 
+</div>
+
+</div>
+
+<div :id="fourthOption" class="row">
+    <div class="col-md-12">
+        <div class="form-row">
+            <div class="col-4">
+              <input type="text" v-model="color4" class="form-control" placeholder="Color">
+            </div>
+            <div class="col">
+              <input type="text"  v-model="size4" class="form-control" placeholder="Size">
+            </div>
+            <div class="col">
+                <button  v-on:click="minus4(),QuotationCreation(),sumTotal()">-</button>
+        <span v-html="Quantity4"></span>
+        <button v-on:click="add4(),QuotationCreation(),sumTotal()">+</button>
+              </div>
+           
+          </div>
+        
+     <br>   
+</div>
+
+</div>
+
+<div :id="fifthOption" class="row">
+    <div class="col-md-12">
+        <div class="form-row">
+            <div class="col-4">
+              <input type="text" v-model="color5" class="form-control" placeholder="Color">
+            </div>
+            <div class="col">
+              <input type="text" v-model="size5" class="form-control" placeholder="Size">
+            </div>
+            <div class="col">
+                <button  v-on:click="minus5(),QuotationCreation(),sumTotal()">-</button>
+       <span v-html="Quantity5"></span>
+        <button v-on:click="add5(),QuotationCreation(),sumTotal()">+</button>
+              </div>
+           
+          </div>
+        
+    <br>    
+</div>
+
+</div>
+
+<div :id="sixthOption" class="row">
+    <div class="col-md-12">
+        <div class="form-row">
+            <div class="col-4">
+              <input type="text" v-model="color6" class="form-control" placeholder="Color">
+            </div>
+            <div class="col">
+              <input type="text" v-model="size6" class="form-control" placeholder="Size">
+            </div>
+            <div class="col">
+                <button  v-on:click="minus6(),QuotationCreation(),sumTotal()">-</button>
+        <span v-html="Quantity6"></span>
+        <button v-on:click="add6(),QuotationCreation(),sumTotal()">+</button>
+              </div>
+           
+          </div>
+        <br>
+     
+</div>
+   
+</div>
+
+<div :id="seventhOption" class="row">
+    <div class="col-md-12">
+        <div class="form-row">
+            <div class="col-4">
+              <input type="text" v-model="color7" class="form-control" placeholder="Color">
+            </div>
+            <div class="col">
+              <input type="text" v-model="size7" class="form-control" placeholder="Size">
+            </div>
+            <div class="col">
+                <button  v-on:click="minus7(),QuotationCreation(),sumTotal()">-</button>
+        <span v-html="Quantity7"></span>
+        <button v-on:click="add7(),QuotationCreation(),sumTotal()">+</button>
+              </div>
+           
+          </div>
+        <br>
+        
+</div>
+
+</div>
+
+<div :id="btn" class="row">
+    <div class="col-md-12">
+        <button class="btn bg-secondary" v-on:click="moreoptions()">Add more colors</button>
+      
+    </div>  <br>
+</div>
+</div>
+</div>
+<div :id="link2">
+
+    <div class="form-group">
+        <div class="form-row">
+                <div class="col-10 offset-1">
+            <input type=text  class="form-control" placeholder="Enter 1688 link" id="search">
+        </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 offset-2">
+            <p><span v-html="NameofItem2"></span></p>
+    </div>
+    
+    </div>
+    <div class="row">
+        <div class="col-md-12 offset-2">
+            <p>price:{{tags2}}<span class="offset-4">Quantity</span></p>
+    </div>      
+    
+    </div>
+    
+    <div class="offset-1">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-row">
+                <div class="col-4">
+                  <input type="text" v-model="colortwo1" class="form-control" placeholder="Color">
+                </div>
+                <div class="col">
+                  <input type="text" v-model="sizetwo1" class="form-control" placeholder="size">
+                </div>
+                <div class="col">
+    
+              
+                    <button  v-on:click="minustwo(),QuotationCreationtwo(),sumTotal()">-</button>
+            <span v-html="Quantitytwo"></span>
+            <button v-on:click="addtwo(),QuotationCreationtwo(),sumTotal()">+</button>
+                  </div>
+               
+              </div>
+           <br> 
+            
+    </div>
+    
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-row">
+                <div class="col-4">
+                  <input type="text" v-model="colortwo2" class="form-control" placeholder="Color">
+                </div>
+                <div class="col">
+                  <input type="text" v-model="sizetwo2" class="form-control" placeholder="size">
+                </div>
+                <div class="col">
+    
+              
+                    <button  v-on:click="minustwo2(),QuotationCreationtwo(),sumTotal()">-</button>
+           <span v-html="Quantitytwo2"></span>
+            <button v-on:click="addtwo2(),QuotationCreationtwo(),sumTotal()">+</button>
+                  </div>
+               
+              </div>
+           <br> 
+            
+    </div>
+    
+    </div>
+    <div :id="thirdOptiontwo" class="row">
+        <div class="col-md-12">
+            <div class="form-row">
+                <div class="col-4">
+                  <input type="text" v-model="colortwo3" class="form-control" placeholder="Color">
+                </div>
+                <div class="col">
+                  <input type="text" v-model="sizetwo3" class="form-control" placeholder="size">
+                </div>
+                <div class="col">
+    
+              
+                    <button  v-on:click="minustwo3(),QuotationCreationtwo(),sumTotal()">-</button>
+           <span v-html="Quantitytwo3"></span>
+            <button v-on:click="addtwo3(),QuotationCreationtwo(),sumTotal()">+</button>
+                  </div>
+               
+              </div>
+           <br> 
+            
+    </div>
+    
+    </div>
+    <div  :id="fourthOptiontwo" class="row">
+        <div class="col-md-12">
+            <div class="form-row">
+                <div class="col-4">
+                  <input type="text" v-model="colortwo4" class="form-control" placeholder="Color">
+                </div>
+                <div class="col">
+                  <input type="text" v-model="sizetwo4" class="form-control" placeholder="size">
+                </div>
+                <div class="col">
+    
+              
+                    <button  v-on:click="minustwo4(),QuotationCreationtwo(),sumTotal()">-</button>
+            <span v-html="Quantitytwo4"></span>
+            <button v-on:click="addtwo4(),QuotationCreationtwo(),sumTotal()">+</button>
+                  </div>
+               
+              </div>
+           <br> 
+            
+    </div>
+    
+    </div>
+    <div :id="fifthOptiontwo" class="row">
+        <div class="col-md-12">
+            <div class="form-row">
+                <div class="col-4">
+                  <input type="text" v-model="colortwo5" class="form-control" placeholder="Color">
+                </div>
+                <div class="col">
+                  <input type="text" v-model="sizetwo5" class="form-control" placeholder="Size">
+                </div>
+                <div class="col">
+                    <button  v-on:click="minustwo5(),QuotationCreationtwo(),sumTotal()">-</button>
+           <span v-html="Quantitytwo5"></span>
+            <button v-on:click="addtwo5(),QuotationCreationtwo(),sumTotal()">+</button>
+                  </div>
+               
+              </div>
+            
+        <br>    
+    </div>
+    
+    </div>
+    <div :id="sixthOptiontwo" class="row">
+        <div class="col-md-12">
+            <div class="form-row">
+                <div class="col-4">
+                  <input type="text" v-model="colortwo6" class="form-control" placeholder="Color">
+                </div>
+                <div class="col">
+                  <input type="text" v-model="sizetwo6" class="form-control" placeholder="Size">
+                </div>
+                <div class="col">
+                    <button  v-on:click="minustwo6(),QuotationCreationtwo(),sumTotal()">-</button>
+            <span v-html="Quantitytwo6"></span>
+            <button v-on:click="addtwo6(),QuotationCreationtwo(),sumTotal()">+</button>
+                  </div>
+               
+              </div>
+            <br>
+         
+    </div>
+       
+    </div>
+    <div :id="seventhOptiontwo" class="row">
+        <div class="col-md-12"> 
+            <div class="form-row">
+                <div class="col-4">
+                  <input type="text" v-model="colortwo7" class="form-control" placeholder="Color">
+                </div>
+                <div class="col">
+                  <input type="text" v-model="sizetwo7" class="form-control" placeholder="Size">
+                </div>
+                <div class="col">
+                    <button  v-on:click="minustwo7(),QuotationCreation(),sumTotal()">-</button>
+            <span v-html="Quantitytwo7"></span>
+            <button v-on:click="addtwo7(),QuotationCreation(),sumTotal()">+</button>
+                  </div>
+               
+              </div>
+            <br>
+            
+    </div>
+    
+    </div>
+    
+    <div :id="btntwo" class="row">
+        <div class="col-md-12">
+            <button class="btn bg-secondary" v-on:click="moreoptionstwo()">Add more colors</button>
+          
+        </div>  <br>
+    </div>
+    </div>
+
+</div>
+<div :id="link3">
+
+  <div class="form-group">
+      <div class="form-row">
+              <div class="col-10 offset-1">
+          <input type=text  class="form-control" placeholder="Enter 1688 link" id="search">
+      </div>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 offset-2">
+        <p><span v-html="NameofItem3"></span></p>
+</div>
+</div>
+<div class="row">
+    <div class="col-md-12 offset-2">
+        <p>price:{{tags3}}<span class="offset-4">Quantity</span></p>
+</div>      
+
+</div>
+<div class="offset-1">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="form-row">
+            <div class="col-4">
+              <input type="text" v-model="colorthree1" class="form-control" placeholder="Color">
+            </div>
+            <div class="col">
+              <input type="text" v-model="sizethree1" class="form-control" placeholder="Size">
+            </div>
+            <div class="col">
+
+          
+                <button  v-on:click="minusthree(),QuotationCreationthree(),sumTotal()">-</button>
+        <span v-html="Quantitythree"></span>
+        <button v-on:click="addthree(),QuotationCreationthree(),sumTotal()">+</button>
+              </div>
+           
+          </div>
+       <br> 
+        
+</div>
+
+</div>
+<div class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorthree2" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizethree2" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minusthree2(),QuotationCreationthree(),sumTotal()">-</button>
+      <span v-html="Quantitythree2"></span>
+      <button v-on:click="addthree2(),QuotationCreationthree(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+      
+</div>
+
+</div>
+<div :id="thirdOptionthree" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorthree3" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizethree3" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minusthree3(),QuotationCreationthree(),sumTotal()">-</button>
+      <span v-html="Quantitythree3"></span>
+      <button v-on:click="addthree3(),QuotationCreationthree(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+      
+</div>
+
+</div>
+<div  :id="fourthOptionthree" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorthree4" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizethree4" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minusthree4(),QuotationCreationthree(),sumTotal()">-</button>
+     <span v-html="Quantitythree4"></span>
+      <button v-on:click="addthree4(),QuotationCreationthree(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+      
+</div>
+
+</div>
+<div :id="fifthOptionthree" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorthree5" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizethree5" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minusthree5(),QuotationCreationthree(),sumTotal()">-</button>
+      <span v-html="Quantitythree5"></span>
+      <button v-on:click="addthree5(),QuotationCreationthree(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+      
+</div>
+
+</div>
+<div :id="sixthOptionthree" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorthree6" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizethree6" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minusthree6(),QuotationCreationthree(),sumTotal()">-</button>
+     <span v-html="Quantitythree6"></span>
+      <button v-on:click="addthree6(),QuotationCreationthree(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+      
+</div>
+
+</div>
+<div :id="seventhOptionthree" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorthree7" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizethree7" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minusthree7(),QuotationCreationthree(),sumTotal()">-</button>
+      <span v-html="Quantitythree7"></span>
+      <button v-on:click="addthree7(),QuotationCreationthree(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+      
+</div>
+
+</div>
+
+<!--list of colors and sizes-->
+
+  <div :id="btnthree" class="row">
+      <div class="col-md-12">
+          <button class="btn bg-secondary" v-on:click="moreoptionsthree()">Add more colors</button>
+        
+      </div>  <br>
+  </div>
+  </div>
+  </div>
+<div :id="link4">
+
+  <div class="form-group">
+      <div class="form-row">
+              <div class="col-10 offset-1">
+          <input type=text  class="form-control" placeholder="Enter 1688 link" id="search">
+      </div>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 offset-2">
+        <p>{{NameofItem4}}</p>
+</div>
+</div>
+<div class="row">
+    <div class="col-md-12 offset-2">
+        <p>price:{{tags4}}<span class="offset-4">Quantity</span></p>
+</div>      
+
+</div>
+<div class="offset-1">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="form-row">
+            <div class="col-4">
+              <input type="text" v-model="colorfour1" class="form-control" placeholder="Color">
+            </div>
+            <div class="col">
+              <input type="text" v-model="sizefour1" class="form-control" placeholder="Size">
+            </div>
+            <div class="col">
+
+          
+                <button  v-on:click="minusfour(),QuotationCreationfour(),sumTotal()">-</button>
+        <span v-html="Quantityfour"></span>
+        <button v-on:click="addfour(),QuotationCreationfour(),sumTotal()">+</button>
+              </div>
+           
+          </div>
+       <br> 
+       
+</div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorfour2" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizefour2" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minusfour2(),QuotationCreationfour(),sumTotal()">-</button>
+      <span v-html="Quantityfour2"></span>
+      <button v-on:click="addfour2(),QuotationCreationfour(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+     
+</div>
+</div>
+<div :id="thirdOptionfour" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorfour3" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizefour3" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minusfour3(),QuotationCreationfour(),sumTotal()">-</button>
+      <span v-html="Quantityfour3"></span>
+      <button v-on:click="addfour3(),QuotationCreationfour(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+     
+</div>
+</div>
+<div :id="fourthOptionfour" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorfour4" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizefour4" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minusfour4(),QuotationCreationfour(),sumTotal()">-</button>
+      <span v-html="Quantityfour4"></span>
+      <button v-on:click="addfour4(),QuotationCreationfour(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+     
+</div>
+</div>
+<div :id="fifthOptionfour" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorfour5" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizefour5" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minusfour5(),QuotationCreationfour(),sumTotal()">-</button>
+      <span v-html="Quantityfour5"></span>
+      <button v-on:click="addfour5(),QuotationCreationfour(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+     
+</div>
+</div>
+<div :id="sixthOptionfour" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorfour6" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizefour6" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minusfour6(),QuotationCreationfour(),sumTotal()">-</button>
+      <span v-html="Quantityfour6"></span>
+      <button v-on:click="addfour6(),QuotationCreationfour(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+     
+</div>
+</div>
+<div :id="seventhOptionfour" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorfour7" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizefour7" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minusfour7(),QuotationCreationfour(),sumTotal()">-</button>
+      <span v-html="Quantityfour7"></span>
+      <button v-on:click="addfour7(),QuotationCreationfour(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+     
+</div>
+</div>
+<!--list of colors and sizes-->
+
+  <div :id="btnfour" class="row">
+      <div class="col-md-12">
+          <button class="btn bg-secondary" v-on:click="moreoptionsfour()">Add more colors</button>
+        
+      </div>  <br>
+  </div>
+  </div>
+
+</div>
+<div :id="link5">
+
+  <div class="form-group">
+      <div class="form-row">
+              <div class="col-10 offset-1">
+          <input type=text  class="form-control" placeholder="Enter 1688 link" id="search">
+      </div>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 offset-2">
+        <p><span v-html="NameofItem5"></span></p>
+</div>
+</div>
+<div class="row">
+    <div class="col-md-12 offset-2">
+        <p>price:{{tags5}}<span class="offset-4">Quantity</span></p>
+</div>      
+
+</div>
+<div class="offset-1">
+<div class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorfive1" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizefive1" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minusfive(),QuotationCreationfive(),sumTotal()">-</button>
+     <span v-html="Quantityfive"></span>
+      <button v-on:click="addfive(),QuotationCreationfive(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+      
+</div>
+
+</div>
+<div class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorfive2" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizefive2" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minusfive2(),QuotationCreationfive(),sumTotal()">-</button>
+      <span v-html="Quantityfive2"></span>
+      <button v-on:click="addfive2(),QuotationCreationfive(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+      
+</div>
+
+</div>
+<div :id="thirdOptionfive" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorfive3" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizefive3" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minusfive3(),QuotationCreationfive(),sumTotal()">-</button>
+     <span v-html="Quantityfive3"></span>
+      <button v-on:click="addfive3(),QuotationCreationfive(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+      
+</div>
+
+</div>
+<div :id="fourthOptionfive" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorfive4" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizefive4" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minusfive4(),QuotationCreationfive(),sumTotal()">-</button>
+      <span v-html="Quantityfive4"></span>
+      <button v-on:click="addfive4(),QuotationCreationfive(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+      
+</div>
+
+</div>
+<div :id="fifthOptionfive" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorfive5" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizefive5" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minusfive5(),QuotationCreationfive(),sumTotal()">-</button>
+      <span v-html="Quantityfive5"></span>
+      <button v-on:click="addfive5(),QuotationCreationfive(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+      
+</div>
+
+</div>
+<div :id="sixthOptionfive" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorfive6" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizefive6" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minusfive6(),QuotationCreationfive(),sumTotal()">-</button>
+     <span v-html="Quantityfive6"></span>
+      <button v-on:click="addfive6(),QuotationCreationfive(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+      
+</div>
+
+</div>
+<div :id="seventhOptionfive" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorfive7" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizefive7" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minusfive7(),QuotationCreationfive(),sumTotal()">-</button>
+      <span v-html="Quantityfive7"></span>
+      <button v-on:click="addfive7(),QuotationCreationfive(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+      
+</div>
+
+</div>
+<!--list of colors and sizes-->
+
+  <div :id="btnfive" class="row">
+      <div class="col-md-12">
+          <button class="btn bg-secondary" v-on:click="moreoptionsfive()">Add more colors</button>
+        
+      </div>  <br>
+  </div>
+  </div>
+
+</div>
+<div :id="link6">
+
+  <div class="form-group">
+      <div class="form-row">
+              <div class="col-10 offset-1">
+          <input type=text  class="form-control" placeholder="Enter 1688 link" id="search">
+      </div>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 offset-2">
+        <p><span v-html="NameofItem6"></span></p>
+</div>
+</div>
+<div class="row">
+    <div class="col-md-12 offset-2">
+        <p>price:{{tags6}}<span class="offset-4">Quantity</span></p>
+</div>      
+
+</div>
+<div class="offset-1">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="form-row">
+            <div class="col-4">
+              <input type="text" v-model="colorsix1" class="form-control" placeholder="Color">
+            </div>
+            <div class="col">
+              <input type="text" v-model="sizesix1" class="form-control" placeholder="Size">
+            </div>
+            <div class="col">
+
+          
+                <button  v-on:click="minussix(),QuotationCreationsix(),sumTotal()">-</button>
+        <span v-html="Quantitysix"></span>
+        <button v-on:click="addsix(),QuotationCreationsix(),sumTotal()">+</button>
+              </div>
+           
+          </div>
+       <br> 
+        
+</div>
+
+
+</div>
+  <div class="row">
+    <div class="col-md-12">
+        <div class="form-row">
+            <div class="col-4">
+              <input type="text" v-model="colorsix2" class="form-control" placeholder="Color">
+            </div>
+            <div class="col">
+              <input type="text" v-model="sizesix2" class="form-control" placeholder="Size">
+            </div>
+            <div class="col">
+
+          
+                <button  v-on:click="minussix2(),QuotationCreationsix(),sumTotal()">-</button>
+        <span v-html="Quantitysix2"></span>
+        <button v-on:click="addsix2(),QuotationCreationsix(),sumTotal()">+</button>
+              </div>
+           
+          </div>
+       <br> 
+        
+</div>
+
+</div>
+<div :id="thirdOptionsix" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorsix3" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizesix3" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minussix3(),QuotationCreationsix(),sumTotal()">-</button>
+     <span v-html="Quantitysix3"></span>
+      <button v-on:click="addsix3(),QuotationCreationsix(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+      
+</div>
+
+</div>
+<div :id="fourthOptionsix" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorsix4" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizesix4" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minussix4(),QuotationCreationsix(),sumTotal()">-</button>
+      <span v-html="Quantitysix4"></span>
+      <button v-on:click="addsix4(),QuotationCreationsix(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+      
+</div>
+
+</div>
+<div :id="fifthOptionsix" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorsix5" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizesix5" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minussix5(),QuotationCreationsix(),sumTotal()">-</button>
+     <span v-html="Quantitysix5"></span>
+      <button v-on:click="addsix5(),QuotationCreationsix(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+      
+</div>
+
+</div>
+<div :id="sixthOptionsix" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorsix6" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizesix6" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minussix6(),QuotationCreationsix(),sumTotal()">-</button>
+     <span v-html="Quantitysix6"></span>
+      <button v-on:click="addsix6(),QuotationCreationsix(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+      
+</div>
+
+</div>
+<div :id="seventhOptionsix" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorsix7" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizesix7" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minussix7(),QuotationCreationsix(),sumTotal()">-</button>
+      <span v-html="Quantitysix7"></span>
+      <button v-on:click="addsix7(),QuotationCreationsix(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+      
+</div>
+
+</div>
+<!--list of colors and sizes-->
+
+  <div :id="btnsix" class="row">
+      <div class="col-md-12">
+          <button class="btn bg-secondary" v-on:click="moreoptionssix()">Add more colors</button>
+        
+      </div>  <br>
+  </div>
+  </div>
+
+</div>
+<div :id="link7">
+
+  <div class="form-group">
+      <div class="form-row">
+              <div class="col-10 offset-1">
+          <input type=text  class="form-control" placeholder="Enter 1688 link" id="search">
+      </div>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 offset-2">
+        <p><span v-html="NameofItem7"></span></p>
+</div>
+</div>
+<div class="row">
+    <div class="col-md-12 offset-2">
+        <p>price:{{tags7}}<span class="offset-4">Quantity</span></p>
+</div>      
+
+</div>
+<div class="offset-1">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="form-row">
+            <div class="col-4">
+              <input type="text" v-model="colorseven1" class="form-control" placeholder="Color">
+            </div>
+            <div class="col">
+              <input type="text" v-model="sizeseven1" class="form-control" placeholder="Size">
+            </div>
+            <div class="col">
+
+          
+                <button  v-on:click="minusseven(),QuotationCreationseven(),sumTotal()">-</button>
+        <span v-html="Quantityseven"></span>
+        <button v-on:click="addseven(),QuotationCreationseven(),sumTotal()">+</button>
+              </div>
+           
+          </div>
+       <br> 
+        
+</div>
+
+</div>
+<div class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorseven2" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizeseven2" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minusseven2(),QuotationCreationseven(),sumTotal()">-</button>
+      <span v-html="Quantityseven2"></span>
+      <button v-on:click="addseven2(),QuotationCreationseven(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+      
+</div>
+
+</div>
+<div :id="thirdOptionseven" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorseven3" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizeseven3" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minusseven3(),QuotationCreationseven(),sumTotal()">-</button>
+      <span v-html="Quantityseven3"></span>
+      <button v-on:click="addseven3(),QuotationCreationseven(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+      
+</div>
+
+</div>
+<div :id="fourthOptionseven" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorseven4" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizeseven4" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minusseven4(),QuotationCreationseven(),sumTotal()">-</button>
+      <span v-html="Quantityseven4"></span>
+      <button v-on:click="addseven4(),QuotationCreationseven(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+      
+</div>
+
+</div>
+<div :id="fifthOptionseven" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorseven5" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizeseven5" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minusseven5(),QuotationCreationseven(),sumTotal()">-</button>
+      <span v-html="Quantityseven5"></span>
+      <button v-on:click="addseven5(),QuotationCreationseven(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+      
+</div>
+
+</div>
+<div :id="sixthOptionseven" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorseven6" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizeseven6" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+
+        
+              <button  v-on:click="minusseven6(),QuotationCreationseven(),sumTotal()">-</button>
+     <span v-html="Quantityseven6"></span>
+      <button v-on:click="addseven6(),QuotationCreationseven(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+      
+</div>
+
+</div>
+<div :id="seventhOptionseven" class="row">
+  <div class="col-md-12">
+      <div class="form-row">
+          <div class="col-4">
+            <input type="text" v-model="colorseven7" class="form-control" placeholder="Color">
+          </div>
+          <div class="col">
+            <input type="text" v-model="sizeseven7" class="form-control" placeholder="Size">
+          </div>
+          <div class="col">
+<button  v-on:click="minusseven7(),QuotationCreationseven(),sumTotal()">-</button>
+      <span v-html="Quantityseven7"></span>
+      <button v-on:click="addseven7(),QuotationCreationseven(),sumTotal()">+</button>
+            </div>
+         
+        </div>
+     <br> 
+      
+</div>
+
+</div>
+<!--list of colors and sizes-->
+
+  <div :id="btnseven" class="row">
+      <div class="col-md-12">
+          <button class="btn bg-secondary" v-on:click="moreoptionsseven()">Add more colors</button>
+        
+      </div>  <br>
+  </div>
+  </div>
+
+</div>
+<div :id="newlinkall" class="row offset-1">
+    <div class="col-md-12">
+        <button class="btn bg-primary" v-on:click="newlink()">Add another link</button>
+
+</div>
+
+</div>
+<br>
+<div class="row">
+    <div class="col-md-12">
+        <h6>Details</h6>
+</div>
+</div>
+<div>
+<div class="row">
+    <div class="col-md-12">
+       <div class="row">
+        <div class="col-md-12">
+         <strong class="offset-4"><span v-html="NameofItem"></span></strong>
+    </div>
+       </div>
+    </div>
+</div>
+
+    <div :id="dit1" class="row offset-2">
+      <div class="col-md-6">
+        {{}}<span v-html="color1"></span> <span class="offset-2"> <span v-html="size1"></span> {{}}</span>  <span class="offset-2"> <span v-html="Quantity"></span>{{}}</span> 
+    </div>
+    </div>
+    <div :id="dit2" class="row offset-2">
+      <div class="col-md-6">
+        {{}}<span v-html="color2"></span> <span class="offset-2"> <span v-html="size2"></span>{{}}</span>  <span class="offset-2"><span v-html="Quantity2"></span> {{}}</span> 
+    </div>
+    </div>
+    <div :id="dit3" class="row offset-2">
+      <div class="col-md-6">
+        <span v-html="color3"></span> <span class="offset-2"><span v-html="size3"></span>  </span>  <span class="offset-2"> <span v-html="Quantity3"></span> </span> 
+    </div>
+    </div>
+    <div :id="dit4" class="row offset-2">
+      <div class="col-md-6">
+        <span v-html="color4"></span><span class="offset-2">  </span> <span v-html="size4"></span> <span class="offset-2"> <span v-html=""></span>{{Quantity4}}</span> 
+    </div>
+    </div>
+    <div :id="dit5" class="row offset-2">
+      <div class="col-md-6">
+        <span v-html="color5"></span><span class="offset-2">  </span> <span v-html="size5"></span> <span class="offset-2"> <span v-html=""></span>{{Quantity5}}</span> 
+    </div>
+    </div>
+    <div :id="dit6" class="row offset-2">
+      <div class="col-md-6">
+        <span v-html="color6"></span> <span class="offset-2">  </span> <span v-html="size6"></span> <span class="offset-2"><span v-html=""></span> {{Quantity6}}</span> 
+    </div>
+    </div>
+    <div :id="dit7" class="row offset-2">
+      <div class="col-md-6">
+        <span v-html="color7"></span> <span class="offset-2"><span v-html="size7"></span>  </span>  <span class="offset-2"> <span v-html=""></span> {{Quantity7}}</span> 
+    </div>
+    </div>
+    <div :id="ditT1" class="row offset-2">
+      <div class="col-md-6">
+      <strong>Total:  <span v-html="Total1"></span> Naira </strong>
+     </div>
+    </div>
+</div>
+ <div>
+    <div class="row">
+        <div class="col-md-12">
+           <div class="row">
+            <div class="col-md-12">
+             <strong class="offset-4"> {{NameofItem2}}</strong>
+        </div>
+           </div>
+        </div>
+    </div>
+    
+        <div :id="dittwo1" class="row offset-2">
+          <div class="col-md-6">
+             <span v-html="colortwo1"></span> <span class="offset-2">  <span v-html="sizetwo1"></span></span>  <span class="offset-2"><span v-html="Quantitytwo"></span>  </span> 
+        </div>
+        </div>
+        <div :id="dittwo2" class="row offset-2">
+          <div class="col-md-6">
+            <span v-html="colortwo2"></span><span class="offset-2">  <span v-html="sizetwo2"></span></span>  <span class="offset-2"> <span v-html="Quantitytwo2"></span> </span> 
+        </div>
+        </div>
+        <div :id="dittwo3" class="row offset-2">
+          <div class="col-md-6">
+            <span v-html="colortwo3"></span><span class="offset-2">  <span v-html="sizetwo3"></span></span>  <span class="offset-2">  <span v-html="Quantitytwo3"></span></span> 
+        </div>
+        </div>
+        <div :id="dittwo4" class="row offset-2">
+          <div class="col-md-6">
+             <span v-html="colortwo4"></span> <span class="offset-2"> <span v-html="sizetwo4"></span></span>  <span class="offset-2">  <span v-html="Quantitytwo4"></span></span> 
+        </div>
+        </div>
+        <div :id="dittwo5" class="row offset-2">
+          <div class="col-md-6">
+              <span v-html="colortwo5"></span><span class="offset-2">  <span v-html="sizetwo5"></span></span>  <span class="offset-2">  <span v-html="Quantitytwo5"></span></span> 
+        </div>
+        </div>
+        <div :id="dittwo6" class="row offset-2">
+          <div class="col-md-6">
+             <span v-html="colortwo6"></span> <span class="offset-2">  <span v-html="sizetwo6"></span></span>  <span class="offset-2">  <span v-html="Quantitytwo6"></span></span> 
+        </div>
+        </div>
+        <div :id="dittwo7" class="row offset-2">
+          <div class="col-md-6">
+             <span v-html="colortwo7"></span><span class="offset-2">  <span v-html="sizetwo7"></span></span>  <span class="offset-2"> <span v-html="Quantitytwo7"></span></span> 
+        </div>
+        </div>
+        <div :id="ditT2" class="row offset-2">
+          <div class="col-md-6">
+          <strong>Total: {{Total2}} <span v-html=""></span>Naira </strong>
+         </div>
+        </div> 
+</div>
+ <div>
+        <div class="row">
+            <div class="col-md-12">
+               <div class="row">
+                <div class="col-md-12">
+                 <strong class="offset-4"> <span v-html="NameofItem3"></span></strong>
+            </div>
+               </div>
+            </div>
+        </div>
+        
+            <div :id="ditthree1" class="row offset-2">
+              <div class="col-md-6">
+                {{colorthree1}} <span class="offset-2"> {{sizethree1}}</span>  <span class="offset-2"> {{Quantitythree}}</span> 
+            </div>
+            </div>
+            <div :id="ditthree2" class="row offset-2">
+              <div class="col-md-6">
+                {{colorthree2}} <span class="offset-2"> {{sizethree2}}</span>  <span class="offset-2"> {{Quantitythree2}}</span> 
+            </div>
+            </div>
+            <div :id="ditthree3" class="row offset-2">
+              <div class="col-md-6">
+                {{colorthree3}} <span class="offset-2"> {{sizethree3}}</span>  <span class="offset-2"> {{Quantitythree3}}</span> 
+            </div>
+            </div>
+            <div :id="ditthree4" class="row offset-2">
+              <div class="col-md-6">
+                {{colorthree4}} <span class="offset-2"> {{sizethree4}}</span>  <span class="offset-2"> {{Quantitythree4}}</span> 
+            </div>
+            </div>
+            <div :id="ditthree5" class="row offset-2">
+              <div class="col-md-6">
+                {{colorthree5}} <span class="offset-2"> {{sizethree5}}</span>  <span class="offset-2"> {{Quantitythree5}}</span> 
+            </div>
+            </div>
+            <div :id="ditthree6" class="row offset-2">
+              <div class="col-md-6">
+                {{colorthree6}} <span class="offset-2"> {{sizethree6}}</span>  <span class="offset-2"> {{Quantitythree6}}</span> 
+            </div>
+            </div>
+            <div :id="ditthree7" class="row offset-2">
+              <div class="col-md-6">
+                {{colorthree7}} <span class="offset-2"> {{sizethree7}}</span>  <span class="offset-2"> {{Quantitythree7}}</span> 
+            </div>
+            </div>
+            <div :id="ditT3" class="row offset-2">
+              <div class="col-md-6">
+              <strong>Total: {{Total3}} Naira </strong>
+             </div>
+            </div> 
+ </div>
+ <div>
+            <div class="row">
+                <div class="col-md-12">
+                   <div class="row">
+                    <div class="col-md-12">
+                     <strong class="offset-4"> {{NameofItem4}}</strong>
+                </div>
+                   </div>
+                </div>
+            </div>
+            
+                <div :id="ditfour1" class="row offset-2">
+                  <div class="col-md-6">
+                    {{colorfour1}} <span class="offset-2"> {{sizefour1}}</span>  <span class="offset-2"> {{Quantityfour}}</span> 
+                </div>
+                </div>
+                <div :id="ditfour2" class="row offset-2">
+                  <div class="col-md-6">
+                    {{colorfour2}} <span class="offset-2"> {{sizefour2}}</span>  <span class="offset-2"> {{Quantityfour2}}</span> 
+                </div>
+                </div>
+                <div :id="ditfour3" class="row offset-2">
+                  <div class="col-md-6">
+                    {{colorfour3}} <span class="offset-2"> {{sizefour3}}</span>  <span class="offset-2"> {{Quantityfour3}}</span> 
+                </div>
+                </div>
+                <div :id="ditfour4" class="row offset-2">
+                  <div class="col-md-6">
+                    {{colorfour4}} <span class="offset-2"> {{sizefour4}}</span>  <span class="offset-2"> {{Quantityfour4}}</span> 
+                </div>
+                </div>
+                <div :id="ditfour5" class="row offset-2">
+                  <div class="col-md-6">
+                    {{colorfour5}} <span class="offset-2"> {{sizefour5}}</span>  <span class="offset-2"> {{Quantityfour5}}</span> 
+                </div>
+                </div>
+                <div :id="ditfour6" class="row offset-2">
+                  <div class="col-md-6">
+                    {{colorfour6}} <span class="offset-2"> {{sizefour6}}</span>  <span class="offset-2"> {{Quantityfour6}}</span> 
+                </div>
+                </div>
+                <div :id="ditfour7" class="row offset-2">
+                  <div class="col-md-6">
+                    {{colorfour7}} <span class="offset-2"> {{sizefour7}}</span>  <span class="offset-2"> {{Quantityfour7}}</span> 
+                </div>
+                </div>
+                <div :id="ditT4" class="row offset-2">
+                  <div class="col-md-6">
+                  <strong>Total: {{Total4}} Naira </strong>
+                 </div>
+                </div> 
+</div>
+ <div>
+                <div class="row">
+                    <div class="col-md-12">
+                       <div class="row">
+                        <div class="col-md-12">
+                         <strong class="offset-4"> {{NameofItem5}}</strong>
+                    </div>
+                       </div>
+                    </div>
+                </div>
+                
+                    <div :id="ditfive1" class="row offset-2">
+                      <div class="col-md-6">
+                        {{colorfive1}} <span class="offset-2"> {{sizefive1}}</span>  <span class="offset-2"> {{Quantityfive}}</span> 
+                    </div>
+                    </div>
+                    <div :id="ditfive2" class="row offset-2">
+                      <div class="col-md-6">
+                        {{colorfive2}} <span class="offset-2"> {{sizefive2}}</span>  <span class="offset-2"> {{Quantityfive2}}</span> 
+                    </div>
+                    </div>
+                    <div :id="ditfive3" class="row offset-2">
+                      <div class="col-md-6">
+                        {{colorfive3}} <span class="offset-2"> {{sizefive3}}</span>  <span class="offset-2"> {{Quantityfive3}}</span> 
+                    </div>
+                    </div>
+                    <div :id="ditfive4" class="row offset-2">
+                      <div class="col-md-6">
+                        {{colorfive4}} <span class="offset-2"> {{sizefive4}}</span>  <span class="offset-2"> {{Quantityfive4}}</span> 
+                    </div>
+                    </div>
+                    <div :id="ditfive5" class="row offset-2">
+                      <div class="col-md-6">
+                        {{colorfive5}} <span class="offset-2"> {{sizefive5}}</span>  <span class="offset-2"> {{Quantityfive5}}</span> 
+                    </div>
+                    </div>
+                    <div :id="ditfive6" class="row offset-2">
+                      <div class="col-md-6">
+                        {{colorfive6}} <span class="offset-2"> {{sizefive6}}</span>  <span class="offset-2"> {{Quantityfive6}}</span> 
+                    </div>
+                    </div>
+                    <div :id="ditfive7" class="row offset-2">
+                      <div class="col-md-6">
+                        {{colorfive7}} <span class="offset-2"> {{sizefive7}}</span>  <span class="offset-2"> {{Quantityfive7}}</span> 
+                    </div>
+                    </div>
+                    <div :id="ditT5" class="row offset-2">
+                      <div class="col-md-6">
+                      <strong>Total: {{Total5}} Naira </strong>
+                     </div>
+                    </div> 
+</div>
+ <div>
+                    <div class="row">
+                        <div class="col-md-12">
+                           <div class="row">
+                            <div class="col-md-12">
+                             <strong class="offset-4"> {{NameofItem6}}</strong>
+                        </div>
+                           </div>
+                        </div>
+                    </div>
+                    
+                        <div :id="ditsix1" class="row offset-2">
+                          <div class="col-md-6">
+                            {{colorsix1}} <span class="offset-2"> {{sizesix1}}</span>  <span class="offset-2"> {{Quantitysix}}</span> 
+                        </div>
+                        </div>
+                        <div :id="ditsix2" class="row offset-2">
+                          <div class="col-md-6">
+                            {{colorsix2}} <span class="offset-2"> {{sizesix2}}</span>  <span class="offset-2"> {{Quantitysix2}}</span> 
+                        </div>
+                        </div>
+                        <div :id="ditsix3" class="row offset-2">
+                          <div class="col-md-6">
+                            {{colorsix3}} <span class="offset-2"> {{sizesix3}}</span>  <span class="offset-2"> {{Quantitysix3}}</span> 
+                        </div>
+                        </div>
+                        <div :id="ditsix4" class="row offset-2">
+                          <div class="col-md-6">
+                            {{colorsix4}} <span class="offset-2"> {{sizesix4}}</span>  <span class="offset-2"> {{Quantitysix4}}</span> 
+                        </div>
+                        </div>
+                        <div :id="ditsix5" class="row offset-2">
+                          <div class="col-md-6">
+                            {{colorsix5}} <span class="offset-2"> {{sizesix5}}</span>  <span class="offset-2"> {{Quantitysix5}}</span> 
+                        </div>
+                        </div>
+                        <div :id="ditsix6" class="row offset-2">
+                          <div class="col-md-6">
+                            {{colorsix6}} <span class="offset-2"> {{sizesix6}}</span>  <span class="offset-2"> {{Quantitysix6}}</span> 
+                        </div>
+                        </div>
+                        <div :id="ditsix7" class="row offset-2">
+                          <div class="col-md-6">
+                            {{colorsix7}} <span class="offset-2"> {{sizesix7}}</span>  <span class="offset-2"> {{Quantitysix7}}</span> 
+                        </div>
+                        </div>
+                        <div :id="ditT6" class="row offset-2">
+                          <div class="col-md-6">
+                          <strong>Total: {{Total6}} Naira </strong>
+                         </div>
+                        </div> 
+</div>
+ <div>
+                        <div class="row">
+                            <div class="col-md-12">
+                               <div class="row">
+                                <div class="col-md-12">
+                                 <strong class="offset-4"> {{NameofItem7}}</strong>
+                            </div>
+                               </div>
+                            </div>
+                        </div>
+                        
+                            <div :id="ditseven1" class="row offset-2">
+                              <div class="col-md-6">
+                                {{colorseven1}} <span class="offset-2"> {{sizeseven1}}</span>  <span class="offset-2"> {{Quantityseven}}</span> 
+                            </div>
+                            </div>
+                            <div :id="ditseven2" class="row offset-2">
+                              <div class="col-md-6">
+                                {{colorseven2}} <span class="offset-2"> {{sizeseven2}}</span>  <span class="offset-2"> {{Quantityseven2}}</span> 
+                            </div>
+                            </div>
+                            <div :id="ditseven3" class="row offset-2">
+                              <div class="col-md-6">
+                                {{colorseven3}} <span class="offset-2"> {{sizeseven3}}</span>  <span class="offset-2"> {{Quantityseven3}}</span> 
+                            </div>
+                            </div>
+                            <div :id="ditseven4" class="row offset-2">
+                              <div class="col-md-6">
+                                {{colorseven4}} <span class="offset-2"> {{sizeseven4}}</span>  <span class="offset-2"> {{Quantityseven4}}</span> 
+                            </div>
+                            </div>
+                            <div :id="ditseven5" class="row offset-2">
+                              <div class="col-md-6">
+                                {{colorseven5}} <span class="offset-2"> {{sizeseven5}}</span>  <span class="offset-2"> {{Quantityseven5}}</span> 
+                            </div>
+                            </div>
+                            <div :id="ditseven6" class="row offset-2">
+                              <div class="col-md-6">
+                                {{colorseven6}} <span class="offset-2"> {{sizeseven6}}</span>  <span class="offset-2"> {{Quantityseven6}}</span> 
+                            </div>
+                            </div>
+                            <div :id="ditseven7" class="row offset-2">
+                              <div class="col-md-6">
+                                {{colorseven7}} <span class="offset-2"> {{sizeseven7}}</span>  <span class="offset-2"> {{Quantityseven7}}</span> 
+                            </div>
+                            </div>
+                            <div :id="ditT7" class="row offset-2">
+                              <div class="col-md-6">
+                              <strong>Total: {{Total7}} Naira </strong>
+                             </div>
+                            </div> 
+ </div>      
+      
+  
+          <br>
+    <div class="row">
+    <div class="col-md-5 offset-2">
+       <p>*Please kindly note that customs fee is not part of this fee</p>
+        
+      <p>*Failure to pay for your order 2 day after paying for commitment fee means forfieting your commitment fee!</p>
+       
+       </div>
+</div>
+        <br>
+       <a style="background-color: yellow;" class="btn offset-5">Place Order</a>
+        
+</div>
+
+     
+    <!-- Optional JavaScript -->
+    <script defer src="C:\two\Node-Scrapping.v2\node-scraping\public\indexvue.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>

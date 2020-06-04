@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Quotation Checker</title>
+  </head>
+  <body>
+    PRICE for ALL: <h3  id="price2"></h3>
+    delivery fee(in china):<h3></h3> 
+    commision(5%):<h3></h3>
+    *Please kindly note that customs fee is not part of this fee
+    <input type=text  placeholder="Enter 1688 link" id="search">
+   price for one:<h3 id="price1"><!--price gooteen from scaper--></h3>
+   
+    <!--Adding specification-->
+    <input type=text placeholder="enter ONE color">
+    <input type=text placeholder="enter size of the color you want">
+    <input type=text placeholder="enter the quantity of that color you want " id="quantity">
+    
+     
+ 
+
+
+
+
+
+
+    <script type="">
+      function Binding(b) {
+	_this = this
+	this.element = b.element
+	this.value = b.object[b.property]
+	this.attribute = b.attribute
+	this.valueGetter = function(){
+		return _this.value;
+	}
+	this.valueSetter = function(val){
+		_this.value = val
+		_this.element[_this.attribute] = val
+	}
+
+    if(b.event){
+        this.element.addEventListener(b.event, function(event){
+			_this.value = _this.element[_this.attribute]
+        })        
+    }
+
+	Object.defineProperty(b.object, b.property, {
+		get: this.valueGetter,
+		set: this.valueSetter
+	});	
+	b.object[b.property] = this.value;
+	
+	this.element[this.attribute] = this.value
+}
+
+
+var obj = {a:123}
+var myElement = document.getElementById("price1")
+new Binding({
+	object: obj,
+	property: "a",
+	element: myElement,
+	attribute: "value",
+	event: "keyup"
+})
+
+obj.a = 456;
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>

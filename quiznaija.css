@@ -1,0 +1,226 @@
+#cashouts{
+    position: absolute;
+    top: 0%;
+    border-radius: 15px;
+    width: 27%;
+}
+#logo{
+    color: rgb(248, 240, 243);
+   
+}
+
+#logo2{
+    color: lightgreen;
+    top: 0%;
+    position: absolute;
+    left: 33%;
+}
+#container1{
+    width: 80%;
+    position: absolute;
+    height: 110vh;
+}
+#body{
+    background-color: black;
+}
+#descp{
+    position: absolute;
+    top: 12%;
+    color: gold;
+    margin-left: 12%;
+
+
+}
+#descp2{
+    position: absolute;
+    top: 20%;
+    color: gold;
+    margin-left:27%;
+
+
+}
+#start{
+    top:41%;
+    margin-left: 19%;
+    position: absolute;;
+    width:200px;
+    height:50px;
+    border-radius: 30px;
+    border-color: rgb(194, 44, 44);
+    
+    background-color :rgb(194, 44, 44);
+    color: ivory;}
+
+#cashouts2{
+    top:51%;
+    margin-left: 10%;
+    position: absolute;;
+    width:250px;
+    height:50px;
+    border-radius: 30px;
+    border-color:rgb(49, 221, 72);
+    background-color :rgb(49, 221, 72);
+    color: ivory;
+}
+
+
+#first{
+   
+    top:26%;
+    position: absolute;;
+    white-space: nowrap;
+    color:rgb(94, 255, 0);
+    right: 4%;
+   
+
+}
+
+#second{ 
+    color: rgb(255, 47, 47);
+    position: absolute;
+    top:32%;
+    right: 4%;
+    white-space: nowrap;
+}
+#referbefore{
+    display: none;
+}
+#descpafter{
+    display: none;
+}
+#profilebefore{
+    display: none;
+}
+#rewardbefore{
+    display: inline;
+   
+}
+#profileafter{
+    color: white;
+    top:22% ;
+    position: absolute;
+}
+#descpbefore{
+    display:block;
+}
+#referafter{
+    top:30vh;
+    margin-left: 22%;
+    position: absolute;
+    width:200px;
+    height:50px;
+    border-radius: 30px;
+    border-color: rgb(194, 44, 44);
+    
+    background-color :rgb(194, 44, 44);
+    color: ivory;
+
+
+}
+#referdescp{
+
+    top:38vh;
+    margin-left: 23%;
+    position: absolute;;
+  color: rgb(122, 245, 122);
+  width: 230px;
+}
+#time{
+    color:  coral ;
+  
+}
+#username{
+    color: coral;
+}
+#userscore{
+    color: rgb(255, 8, 255);
+}
+#cashouts2after{
+    top:76%;
+    margin-left: 19%;
+    position: absolute;;
+    width:250px;
+    height:50px;
+    border-radius: 30px;
+    border-color:rgb(49, 221, 72);
+    background-color :rgb(49, 221, 72);
+    color: ivory;
+
+}
+#startafter{
+    top:66%;
+    margin-left: 25%;
+    position: absolute;;
+    width:200px;
+    height:50px;
+    border-radius: 30px;
+    border-color: rgb(194, 44, 44);
+    
+    background-color :rgb(194, 44, 44);
+    color: ivory;
+    
+}
+#firstafter{
+    top:12%;
+    position: absolute;;
+    white-space: nowrap;
+    color:rgb(94, 255, 0);
+   
+    
+}
+ #secondafter{ 
+    color: rgb(255, 47, 47);
+  
+   position: absolute;
+    top: 18%;
+    white-space: nowrap;
+}  
+/* sign up */
+
+
+
+#container2{
+    width: 80%;
+    position: absolute;
+    height: 110vh;
+}
+#form{
+    top: 9%;
+    position:absolute;
+    color: yellow;
+    white-space: nowrap;
+}
+#form2{
+    top: 18%;
+    position:absolute;
+    color: white;
+    width: 3000px;
+}
+#form3{
+    top: 30%;
+    position:absolute;
+    color: white;
+}
+#form4{
+    top: 42%;
+    position:absolute;
+    color: white;
+}
+#form5{
+    top: 54%;
+    position:absolute;
+    color: white;
+}
+#form6{
+    top: 66%;
+    position:absolute;
+    color: white;
+}
+#form7{
+    top: 80%;
+    position:absolute;
+    color: white;
+}
+
+
+
